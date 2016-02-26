@@ -1,3 +1,5 @@
+package base;
+
 public class Type {
 	private final String name;
 	private final String[] attributes;
@@ -9,5 +11,9 @@ public class Type {
 	
 	public Instance instanciate() {
 		return new Instance(this);
+	}
+	
+	public String getName() {
+		return this.name;
 	}
 }

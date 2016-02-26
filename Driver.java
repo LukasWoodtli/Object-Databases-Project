@@ -1,3 +1,6 @@
+import base.Instance;
+import base.Type;
+
 public class Driver {
 	public static void main(String[] args) {
 		Type person = new Type("Person", new String[] {"name", "email", "employer"});
