@@ -13,15 +13,14 @@ public class Instance {
 	}
 	
 	public void setAttributeValue(String attrName, Object attrValue) {
+		type.exceptWhenAttributeNotAvailable(attrName);
 		this.dictAttributes.put(attrName, attrValue);
 	}
 	
-	public String getAttributeValue(String attrName) {
+	public Object getAttributeValue(String attrName) {
 		
-		String result = this.dictAttributes.get(attrName).toString();
+		type.exceptWhenAttributeNotAvailable(attrName);
 		
-		if(result != null)		
-			return result;
-		return "";		
+		return this.dictAttributes.get(attrName);
 	}
 }

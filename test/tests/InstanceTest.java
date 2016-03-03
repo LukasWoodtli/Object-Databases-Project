@@ -11,7 +11,7 @@ import base.Type;
 public class InstanceTest {
 
 	private Type company;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		company = new Type("Company", new String[]{"name", "url"});
