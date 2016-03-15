@@ -23,4 +23,9 @@ public class Instance {
 		
 		return this.dictAttributes.get(attrName);
 	}
+
+	public void invoke(String methodName) {
+		type.invoke(methodName);
+		
+	}
 }
