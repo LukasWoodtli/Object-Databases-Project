@@ -18,16 +18,19 @@ public class MethodsTest {
 
 	// for checking what's written to stdout
 	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-
+	private PrintStream stdout;
+	
 	@Before
 	public void setUp() {
+		stdout = System.out;
 		System.setOut(new PrintStream(outContent));
 	}
 	
 
 	@After
 	public void tearDown() {
-		System.setOut(null);
+		System.setOut(stdout);   
+		
 	}
 	
 	@Test
