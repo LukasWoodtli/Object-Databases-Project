@@ -25,7 +25,10 @@ public class Instance {
 	}
 
 	public void invoke(String methodName) {
-		type.invoke(methodName);
-		
+		type.invoke(methodName);	
+	}
+	
+	public String getTypeName() {
+		return type.getName();
 	}
 }

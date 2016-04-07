@@ -20,7 +20,9 @@ public class Type {
 	}
 	
 	public Instance instanciate() {
-		return new Instance(this);
+		Instance inst = new Instance(this);
+		Extent.store(inst);
+		return inst;
 	}
 	
 	public String getName() {
