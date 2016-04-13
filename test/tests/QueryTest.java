@@ -17,18 +17,33 @@ public class QueryTest {
 
 	static final String compName = "Super & Co";
 
+	static final String compUrl = "www.example.com";
+	
 	@Before
 	public void setUp() throws Exception {
 		Type company = new Type("Company", new String[]{"name", "url"});
 		Instance myCompany = company.instanciate();
 		myCompany.setAttributeValue("name", compName);
+		myCompany.setAttributeValue("url", compUrl);
 	}
 
 	@Test
-	public final void test() {
+	public final void testQueryName() {
 		ArrayList<Object> result = Extent.query("name", "Company", "name", compName);
 		assertEquals(compName, result.get(0));
 
 	}
 
+	@Test
+	public final void testQueryUrl() {
+		ArrayList<Object> result = Extent.query("name", "Company", "url", compUrl);
+		assertEquals(compName, result.get(0));
+
+	}
+
+	@Test
+	public final void testQueryUrlNoResult() {
+		ArrayList<Object> result = Extent.query("name", "Company", "url", "blabla");
+		assertTrue(result.isEmpty());
+	}
 }
