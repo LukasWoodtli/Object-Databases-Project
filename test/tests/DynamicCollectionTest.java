@@ -17,7 +17,7 @@ public class DynamicCollectionTest {
 	static final String compName = "MyCompany";
 	static final String compUrl = "www.example.com";
 	
-    DynamicCollection dynCol = new DynamicCollection("name", "Company", "name", compName);
+    DynamicCollection dynCol;
 	DynamicCollectionIterator it;
 	
 	@Before
@@ -41,7 +41,6 @@ public class DynamicCollectionTest {
 	
 	@Test
 	public final void testNext() {
-		assert(it.hasNext());
 		assertEquals(compName, it.next().getAttributeValue("name"));
 	}
 	

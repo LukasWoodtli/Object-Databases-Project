@@ -9,13 +9,11 @@ public class DynamicCollection implements Iterable<Instance> {
 
 	public class DynamicCollectionIterator implements java.util.Iterator<Instance> {
 
-		private Iterator<Instance> originalCollectionIterator;
-		private Iterator<Instance> originalCollectionSearchIterator;
+		private Iterator<Instance> originalCollectionIterator = DynamicCollection.this.collection.iterator();
+		private Iterator<Instance> originalCollectionSearchIterator = DynamicCollection.this.collection.iterator();
 
 		
 		DynamicCollectionIterator() {
-			this.originalCollectionIterator = DynamicCollection.this.collection.iterator();
-			this.originalCollectionSearchIterator = null;
 		}
 		
 		@Override
@@ -29,14 +27,7 @@ public class DynamicCollection implements Iterable<Instance> {
 
 		@Override
 		public Instance next() {
-			if (originalCollectionSearchIterator == null ||
-			    originalCollectionIterator == originalCollectionSearchIterator)
-			{
-				if (!searchForNextValidElement())
-				{
-					throw new NoSuchElementException();
-				}
-			}
+			//throw new NoSuchElementException();
 			
 			originalCollectionIterator = originalCollectionSearchIterator;
 			return originalCollectionIterator.next();
@@ -44,18 +35,22 @@ public class DynamicCollection implements Iterable<Instance> {
 		
 		private boolean searchForNextValidElement()
 		{
-			originalCollectionSearchIterator = originalCollectionIterator;
-			while(originalCollectionSearchIterator.hasNext())
-			{
-				if (DynamicCollection.this.query.test(originalCollectionSearchIterator.next()))
+			if (originalCollectionSearchIterator == originalCollectionIterator) {
+					
+				while(originalCollectionSearchIterator.hasNext())
 				{
-					return true;
+					if (DynamicCollection.this.query.test(originalCollectionSearchIterator.next()))
+					{
+						return true;
+					}
 				}
+				
+				return false;
 			}
-			
-			return false;
-		}
-		
+			else {
+				return true;
+			}
+		}		
 	}
 	
 	private static final long serialVersionUID = -8165359151099610375L;
