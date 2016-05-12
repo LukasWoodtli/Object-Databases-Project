@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 public class Extent {
 
 	static HashSet<Instance> extent = new HashSet<Instance>();
+	
+	public static void clear() {
+		extent = new HashSet<Instance>();
+	}
 
 	public static void store(Instance value) {
 		extent.add(value);		

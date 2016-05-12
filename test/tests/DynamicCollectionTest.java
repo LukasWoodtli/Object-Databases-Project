@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import base.DynamicCollection;
 import base.DynamicCollection.DynamicCollectionIterator;
+import base.Extent;
 import base.Instance;
 import base.Type;
 
@@ -22,6 +23,7 @@ public class DynamicCollectionTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		Extent.clear();
 		
 		Type company = new Type("Company", new String[]{"name", "url"});
 		Instance myCompany = company.instanciate();
