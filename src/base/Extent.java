@@ -13,6 +13,10 @@ public class Extent {
 		extent.add(value);		
 	}
 	
+	public static HashSet<Instance> getExtent()
+	{
+		return extent;
+	}
 	public static ArrayList<Object> query(String select, String from, String whereProp, Object whereVal) {
 		// from
 		HashSet<Instance> query = (HashSet<Instance>)extent.stream().filter(x -> x.getTypeName() == from).collect(Collectors.toSet());
